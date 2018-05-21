@@ -1,4 +1,4 @@
-package com.entity;
+package com.datadictionary.entity;
 
 import javax.persistence.*;
 
@@ -11,23 +11,26 @@ public class DataRow {
 	
 	private String application;
 	
-	private String schema;
+	private String schemaName;
 	
-	private String table;
+	private String tableName;
 	
-	private String column;
+	private String columnName;
 	
 	private String dataType;
 	
 	private String description;
 	
 	@Id
-	@Column(name = "rid")
+	@Column(name = "id")
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	public int getId() {
 		return this.id;
 	}
-
+	
+	public void setId(int id) {
+		this.id = id;
+	}
 	public String getApplication() {
 		return application;
 	}
@@ -36,28 +39,28 @@ public class DataRow {
 		this.application = application;
 	}
 
-	public String getSchema() {
-		return schema;
+	public String getSchemaName() {
+		return schemaName;
 	}
 
-	public void setSchema(String schema) {
-		this.schema = schema;
+	public void setSchemaName(String schemaName) {
+		this.schemaName = schemaName;
 	}
 
-	public String getTable() {
-		return table;
+	public String getTableName() {
+		return tableName;
 	}
 
-	public void setTable(String table) {
-		this.table = table;
+	public void setTableName(String tableName) {
+		this.tableName = tableName;
+	}
+	
+	public String getColumnName() {
+		return columnName;
 	}
 
-	public String getColumn() {
-		return column;
-	}
-
-	public void setColumn(String column) {
-		this.column = column;
+	public void setColumnName(String columnName) {
+		this.columnName = columnName;
 	}
 
 	public String getDataType() {
@@ -75,5 +78,7 @@ public class DataRow {
 	public void setDescription(String description) {
 		this.description = description;
 	}
+
+	
 	
 }

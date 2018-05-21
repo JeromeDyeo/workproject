@@ -1,11 +1,15 @@
-package com.service;
+package com.datadictionary.service;
+
+import java.util.*;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.dao.EmptyResultDataAccessException;
+import org.springframework.stereotype.Service;
 
-import com.entity.DataRow;
-import com.repository.DataDictionaryRepository;
+import com.datadictionary.entity.DataRow;
+import com.datadictionary.repository.DataDictionaryRepository;
 
+@Service("DataDictionaryService")
 public class DataDictionaryService {
 
 	@Autowired
@@ -27,10 +31,14 @@ public class DataDictionaryService {
 			dataDictionaryRepository.delete(dataRow);
 			return true;
 		} catch (EmptyResultDataAccessException ex) {
-			System.out.println(e.getMessage());
+			System.out.println(ex.getMessage());
 		} catch (Exception e) {
 			System.out.println(e.getMessage());
 		}
 		return false;
+	}
+	
+	public List<DataRow> getAll() {
+		return dataDictionaryRepository.findAll();
 	}
 }

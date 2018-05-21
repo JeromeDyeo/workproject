@@ -1,4 +1,4 @@
-package com.DataDictionary;
+package com.datadictionary;
 
 import java.util.TimeZone;
 

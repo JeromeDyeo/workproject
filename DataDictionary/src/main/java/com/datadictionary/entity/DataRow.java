@@ -2,6 +2,8 @@ package com.datadictionary.entity;
 
 import javax.persistence.*;
 
+import com.opencsv.bean.CsvBindByName;
+
 @Entity
 @Table(name = "datarow")
 
@@ -9,16 +11,22 @@ public class DataRow {
 	
 	private int id;
 	
+	@CsvBindByName (column = "Application")
 	private String application;
 	
+	@CsvBindByName (column = "Schema")
 	private String schemaName;
 	
+	@CsvBindByName (column = "Table")
 	private String tableName;
 	
+	@CsvBindByName (column = "Column")
 	private String columnName;
 	
+	@CsvBindByName (column = "Data Type")
 	private String dataType;
 	
+	@CsvBindByName (column = "Description")
 	private String description;
 	
 	@Id

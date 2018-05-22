@@ -21,6 +21,11 @@ public class IndexController implements ErrorController {
         return new ModelAndView("table");
     }
 	
+	@RequestMapping(value = {"uploadFile"})
+    public ModelAndView uploadFile() {
+        return new ModelAndView("uploadFile");
+    }
+	
 	@RequestMapping(value = PATH)
     public ModelAndView error() {
         return new ModelAndView("error/404");

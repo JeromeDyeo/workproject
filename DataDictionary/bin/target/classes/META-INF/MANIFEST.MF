@@ -1,0 +1,11 @@
+Manifest-Version: 1.0
+Implementation-Title: DataDictionary
+Implementation-Version: 0.0.1-SNAPSHOT
+Built-By: nicho
+Implementation-Vendor-Id: com.datadictionary
+Build-Jdk: 1.8.0_171
+Implementation-URL: https://projects.spring.io/spring-boot/#/spring-bo
+ ot-starter-parent/DataDictionary
+Created-By: Maven Integration for Eclipse
+Main-Class: com.DataDictionary.DataDictionaryApplication
+

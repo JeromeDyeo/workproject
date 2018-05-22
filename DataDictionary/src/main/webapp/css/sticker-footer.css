@@ -1,0 +1,22 @@
+/* Sticky footer styles
+-------------------------------------------------- */
+html {
+	position: relative;
+	min-height: 100%;
+}
+
+body {
+	margin-bottom: 60px; /* Margin bottom by footer height */
+}
+
+.footer {
+	position: fixed;
+	left: 0;
+	bottom: 0;
+	width: 100%;
+	background-color: #FF8C00;
+	color: black;
+	line-height: 28px;
+	font-size: 12px;
+	font-family: "Roboto", Helvetica, Arial, sans-serif;
+}

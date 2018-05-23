@@ -38,9 +38,9 @@ public class DataDictionaryService {
 		return null;
 	}
 	
-	public boolean delete(DataRow dataRow) {
+	public boolean delete(int dataRow) {
 		try {
-			dataDictionaryRepository.delete(dataRow);
+			dataDictionaryRepository.deleteById(dataRow);
 			return true;
 		} catch (EmptyResultDataAccessException ex) {
 			System.out.println(ex.getMessage());

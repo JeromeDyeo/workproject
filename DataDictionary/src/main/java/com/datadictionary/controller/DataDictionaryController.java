@@ -5,9 +5,11 @@ import java.util.*;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RequestPart;
 import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.servlet.ModelAndView;
@@ -29,9 +31,9 @@ public class DataDictionaryController {
 		return mv;
 	}
 	
-	@RequestMapping (value = {"/delete"}, method = RequestMethod.GET)
-	public ModelAndView deleteDataRow(@ModelAttribute("dataRow") DataRow dataRow) {
-		ModelAndView mv = new ModelAndView("table");
+	@RequestMapping (value = {"/delete"}, method = RequestMethod.POST)
+	public ModelAndView deleteDataRow(@RequestParam("dataRow") int dataRow) {
+		ModelAndView mv = new ModelAndView("redirect:getAll");
 		boolean status = dataDictionaryService.delete(dataRow);
 		if (status) {
 			
@@ -48,7 +50,7 @@ public class DataDictionaryController {
 		return mv;
 	}
 	
-	@RequestMapping (value= {"/getAll"}, method = RequestMethod.GET)
+	@GetMapping (value= "/getAll")
 	public ModelAndView getAllData() {
 		ModelAndView mv = new ModelAndView("table");
 		ArrayList<DataRow> allData = (ArrayList<DataRow>) dataDictionaryService.getAll();

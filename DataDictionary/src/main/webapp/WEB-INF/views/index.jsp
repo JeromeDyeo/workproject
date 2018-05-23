@@ -14,7 +14,7 @@
 	<div role="navigation" class="navbar navbar-default">
 		<div class="container">
 			<div class="navbar-header">
-				<a href="index" class="navbar-brand">NTUC Link.</a>
+				<a href="/" class="navbar-brand">NTUC Link.</a>
 				<div class="navbar-buttons">
 					<button type="button" data-toggle="collapse"
 						data-target=".navbar-collapse" class="navbar-toggle navbar-btn">
@@ -24,7 +24,7 @@
 			</div>
 			<div id="navigation" class="collapse navbar-collapse navbar-right">
 				<ul class="nav navbar-nav">
-					<li class="active"><a href="index">Home</a></li>
+					<li class="active"><a href="/">Home</a></li>
 					<li><a href="#">Text page</a></li>
 					<li class="dropdown"><a href="#" data-toggle="dropdown"
 						class="dropdown-toggle">Dropdown <b class="caret"></b></a>
@@ -42,9 +42,8 @@
 		</div>
 	</div>
 	</header>
-
+	<!-- End of Nav -->
 	<!-- Introduction -->
-
 	<div class="jumbotron main-jumbotron">
 		<div class="container">
 			<div class="content">
@@ -53,6 +52,7 @@
 			</div>
 		</div>
 	</div>
+	<!-- End of Intro -->
 
 	<!-- Function -->
 	<section class="background-gray-lightest">
@@ -74,11 +74,11 @@
 			<div class="col-sm-4">
 				<div class="post">
 					<div class="image">
-						<a href="#"><img src="img/blog2.jpg" alt=""
+						<a href="uploadFile"><img src="img/blog2.jpg" alt=""
 							class="img-responsive"></a>
 					</div>
 					<h3>
-						<a href="#">Upload Campaign Data </a>
+						<a href="uploadFile">Upload Campaign Data </a>
 					</h3>
 					<p class="post__intro">
 					<p>Too much data? Place them in Excel and we convert them for
@@ -101,8 +101,9 @@
 		</div>
 	</div>
 	</section>
+	<!-- End of Function -->
 
-
+	<!-- Footer -->
 	<footer class="footer">
 	<div class="footer__copyright">
 		<div class="container">
@@ -114,6 +115,7 @@
 		</div>
 	</div>
 	</footer>
+	<!-- End of footer -->
 
 	<!-- Javascript files-->
 	<script

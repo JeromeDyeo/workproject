@@ -19,7 +19,7 @@
 		<div role="navigation" class="navbar navbar-default">
 			<div class="container">
 				<div class="navbar-header">
-					<a href="index" class="navbar-brand">NTUC Link.</a>
+					<a href="/" class="navbar-brand">NTUC Link.</a>
 					<div class="navbar-buttons">
 						<button type="button" data-toggle="collapse"
 							data-target=".navbar-collapse" class="navbar-toggle navbar-btn">
@@ -29,7 +29,7 @@
 				</div>
 				<div id="navigation" class="collapse navbar-collapse navbar-right">
 					<ul class="nav navbar-nav">
-						<li class="active"><a href="index">Home</a></li>
+						<li class="active"><a href="/">Home</a></li>
 						<li><a href="#">Text page</a></li>
 						<li class="dropdown"><a href="#" data-toggle="dropdown"
 							class="dropdown-toggle">Dropdown <b class="caret"></b></a>
@@ -47,12 +47,12 @@
 			</div>
 		</div>
 	</header>
-
+	<!-- End of Nav -->
 	<!-- Content -->
 	<div class="container clearfix ">
 		<div class="btn-toolbar">
-			<button class="btn btn-primary">Create Campaign</button>
-			<button class="btn">Import Data</button>
+			<a href="#" class="btn btn-primary" role="button">Create Entry</a> <a
+				href="uploadFile" class="btn btn-info" role="button">Upload Data</a>
 		</div>
 	</div>
 	<section>
@@ -94,6 +94,8 @@
 		</div>
 	</section>
 	<section></section>
+	<!-- End of content -->
+	<!-- Footer -->
 	<footer class="footer">
 		<div class="footer__copyright">
 			<div class="container">
@@ -105,6 +107,7 @@
 			</div>
 		</div>
 	</footer>
+	<!-- End of footer -->
 	<!-- Javascript files-->
 	<script
 		src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>

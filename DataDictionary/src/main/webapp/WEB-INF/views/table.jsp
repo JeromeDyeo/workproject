@@ -12,7 +12,8 @@
 <link rel="stylesheet" href="/css/bootstrap.min.css">
 <link rel="stylesheet" href="/css/style.default.css">
 <link rel="stylesheet" href="/css/pe-icon-7-stroke.css">
-<script src='http://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.3/jquery.min.js'></script>
+<script
+	src='http://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.3/jquery.min.js'></script>
 </head>
 
 <body>
@@ -86,8 +87,9 @@
 											<td>${data.dataType}</td>
 											<td>${data.description}</td>
 											<td>
-												<button type="button" data-id="${data.id}" class="open-deleteProductModal btn btn-danger" data-toggle="modal" data-target="#deleteProductModal">
-												<i class="fa fa-lg fa-trash" aria-hidden="true"></i></button>
+												<button type="button" data-id="${data.id}"
+													class="open-deleteProductModal btn btn-danger"
+													data-toggle="modal" data-target="#deleteProductModal">Delete</button>
 											</td>
 										</tr>
 									</c:forEach>
@@ -114,37 +116,41 @@
 		</div>
 	</footer>
 	<!-- End of footer -->
-	<!-- DELETE PRODUCT MODAL -->
+
+	<!-- DELETE Campaign -->
 	<div class="modal fade" id="deleteProductModal" role="dialog">
 		<div class="modal-dialog">
 			<div class="modal-content">
 				<div class="modal-header text-center">
-                	<button type="button" class="close" data-dismiss="modal">&times;</button>
-            	</div>	
+					<button type="button" class="close" data-dismiss="modal">&times;</button>
+				</div>
 				<div class="modal-body text-center">
 					<h5>Are you sure you want to delete?</h5>
 					<br />
 					<form action="delete" method="post">
 						<input type="hidden" name="dataRow" id="dataRow" /> <input
-							type="submit" class="btn btn-default" value="Yes">
+							type="submit" class="btn btn-default" value="Yes"> <input
+							type="button" class="btn btn-default" data-dismiss="modal"
+							value="No"></input>
 					</form>
-					<button type="button" class="btn btn-cancel" data-dismiss="modal">No</button>
+
 				</div>
 			</div>
 		</div>
 	</div>
 	<!-- END DELETE PRODUCT MODAL -->
-	
+
 	<!-- Javascript files-->
-	
-	<script>  
-    $(document).on("click", ".open-deleteProductModal", function () {
-        var productId = $(this).data('id');
-        $(".modal-body #dataRow").val(productId);
-   	});
-    </script>
-    
-	<script	src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>
+
+	<script>
+		$(document).on("click", ".open-deleteProductModal", function() {
+			var productId = $(this).data('id');
+			$(".modal-body #dataRow").val(productId);
+		});
+	</script>
+
+	<script
+		src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>
 	<script src="/js/bootstrap.min.js"></script>
 	<script src="/js/jquery.cookie.js"></script>
 	<script src="/js/front.js"></script>

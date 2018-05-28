@@ -23,9 +23,9 @@ public class DataDictionaryController {
 	@Autowired
 	private DataDictionaryService dataDictionaryService;
 	
-	@RequestMapping (value = {"/create"}, method = RequestMethod.GET)
+	@RequestMapping (value = {"/create"}, method = RequestMethod.POST)
 	public ModelAndView createDataRow(@ModelAttribute("dataRow") DataRow dataRow) {
-		ModelAndView mv = new ModelAndView("table");
+		ModelAndView mv = new ModelAndView("redirect:getAll");
 		dataDictionaryService.create(dataRow);
 		
 		return mv;
@@ -43,10 +43,18 @@ public class DataDictionaryController {
 		return mv;
 	}
 	
-	@RequestMapping (value = {"/update"}, method = RequestMethod.GET)
+	@RequestMapping (value = {"/updateView"}, method = RequestMethod.POST)
+	public ModelAndView updateView(@RequestParam("id") int id) {
+		ModelAndView mv = new ModelAndView("update");
+		DataRow dataRow = dataDictionaryService.getById(id);
+		mv.addObject("data", dataRow);
+		return mv;
+	}
+	
+	@RequestMapping (value = {"/update"}, method = RequestMethod.POST)
 	public ModelAndView updateDataRow(@ModelAttribute("dataRow") DataRow dataRow) {
-		ModelAndView mv = new ModelAndView("table");
-		
+		ModelAndView mv = new ModelAndView("redirect:getAll");
+		DataRow updated = dataDictionaryService.update(dataRow);
 		return mv;
 	}
 	

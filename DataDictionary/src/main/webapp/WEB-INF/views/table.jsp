@@ -54,8 +54,9 @@
 	<!-- Content -->
 	<div class="container clearfix ">
 		<div class="btn-toolbar">
-			<a href="#" class="btn btn-primary" role="button">Create Entry</a> <a
-				href="uploadFile" class="btn btn-info" role="button">Upload Data</a>
+			<a href="create" class="btn btn-primary" role="button">Create
+				Entry</a> <a href="uploadFile" class="btn btn-info" role="button">Upload
+				Data</a>
 		</div>
 	</div>
 	<section>
@@ -90,6 +91,12 @@
 												<button type="button" data-id="${data.id}"
 													class="open-deleteProductModal btn btn-danger"
 													data-toggle="modal" data-target="#deleteProductModal">Delete</button>
+											</td>
+											<td>
+												<form action="updateView" method="post">
+													<input type="hidden" name="id" value="${data.id}" />
+													<button type="submit" class="btn btn-warning">Update</button>
+												</form>
 											</td>
 										</tr>
 									</c:forEach>

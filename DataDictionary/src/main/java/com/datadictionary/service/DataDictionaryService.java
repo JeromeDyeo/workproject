@@ -160,4 +160,8 @@ public class DataDictionaryService {
 	public List<DataRow> getAll() {
 		return dataDictionaryRepository.findAll();
 	}
+	
+	public DataRow getById(int id) {
+		return dataDictionaryRepository.findById(id);
+	}
 }

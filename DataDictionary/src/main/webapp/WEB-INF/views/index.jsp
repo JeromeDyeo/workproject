@@ -92,7 +92,7 @@
 							class="img-responsive"></a>
 					</div>
 					<h3>
-						<a href="#">Create Campaign Data </a>
+						<a href="create">Create Campaign Data </a>
 					</h3>
 					<p class="post__intro">
 					<p>Show create campaign data page</p>

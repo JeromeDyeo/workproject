@@ -88,7 +88,7 @@
 			<div class="col-sm-4">
 				<div class="post">
 					<div class="image">
-						<a href="#"><img src="img/blog2.jpg" alt=""
+						<a href="create"><img src="img/blog2.jpg" alt=""
 							class="img-responsive"></a>
 					</div>
 					<h3>

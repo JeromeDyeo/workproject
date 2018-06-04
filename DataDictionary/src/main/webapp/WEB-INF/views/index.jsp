@@ -5,8 +5,8 @@
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <title>Main Page</title>
 <link rel="stylesheet" href="/css/bootstrap.min.css">
-<link rel="stylesheet" href="/css/style.default.css">
 <link rel="stylesheet" href="/css/pe-icon-7-stroke.css">
+<link rel="stylesheet" href="/css/style.default.css">
 </head>
 <body>
 	<!-- navbar #2b90d9 blue color-->
@@ -61,7 +61,7 @@
 			<div class="col-sm-4">
 				<div class="post">
 					<div class="image">
-						<a href="getAll"><img src="img/blog1.jpg" alt=""
+						<a href="getAll"><img src="img/data.jpg" alt=""
 							class="img-responsive"></a>
 					</div>
 					<h3>
@@ -74,7 +74,7 @@
 			<div class="col-sm-4">
 				<div class="post">
 					<div class="image">
-						<a href="uploadFile"><img src="img/blog2.jpg" alt=""
+						<a href="uploadFile"><img src="img/upload.png" alt=""
 							class="img-responsive"></a>
 					</div>
 					<h3>
@@ -88,7 +88,7 @@
 			<div class="col-sm-4">
 				<div class="post">
 					<div class="image">
-						<a href="create"><img src="img/blog2.jpg" alt=""
+						<a href="create"><img src="img/create.jpg" alt=""
 							class="img-responsive"></a>
 					</div>
 					<h3>

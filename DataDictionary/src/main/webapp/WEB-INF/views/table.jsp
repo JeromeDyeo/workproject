@@ -51,49 +51,53 @@
 		</div>
 	</header>
 	<!-- End of Nav -->
-	<!-- Content -->
-	<li class="navbar-form">
-		<form action="search" method="get">
-			<div class="input-group add-on">
-				<span class="input-group-btn"> <select name="searchFilter">
-						<option value="Table">Table</option>
-						<option value="Description">Description</option>
-				</select>
-				</span> <input type="text" name="searchKeyword" class="form-control" /> <span
-					class="input-group-addon">
-					<button type="submit">Search</button>
-				</span>
-			</div>
-		</form>
-	</li>
-	<div class="container clearfix ">
-		<div class="btn-toolbar">
-			<a href="create" class="btn btn-primary" role="button">Create
-				Entry</a> <a href="uploadFile" class="btn btn-info" role="button">Upload
-				Data</a>
-		</div>
-	</div>
+	<!-- Search Filter + Create/Upload buttons -->
 
-
-	<div class="btn-toolbar">
-		<form action="getAll" method="GET" name="filter">
-			<select name="application">
-				<option selected value=""></option>
-				<c:forEach var="app" items="${applicationData}">
-					<option value="${app}">${app}</option>
-				</c:forEach>
-			</select> <select name="tableName">
-				<option selected value=""></option>
-				<c:forEach var="table" items="${tableData}">
-					<option value="${table}">${table}</option>
-				</c:forEach>
-			</select>
-			<button type="submit" class="btn">Filter</button>
-		</form>
-	</div>
-
-	<section>
 		<div class="container clearfix">
+			<div class="row">
+				<div class="col-md-6">
+					<div class="btn-toolbar">
+						<a href="create" class="btn btn-primary" role="button">Create
+							Entry</a> <a href="uploadFile" class="btn btn-info" role="button">Upload
+							Data</a>
+					</div>
+				</div>
+				<div class="col-md-6">
+					<form action="search" method="get">
+						<div class="input-group">
+							<select name="searchFilter">
+								<option value="Table">Table</option>
+								<option value="Description ">Description</option>
+							</select> <input type="text" name="searchKeyword" class="form-control">
+							<span class="input-group-btn">
+								<button type="submit" class="btn btn-info"
+									style="margin-top: 18px; min-height: 36px;">Search</button>
+							</span>
+						</div>
+					</form>
+				</div>
+			</div>
+		</div>
+		<!-- End of  Filter +  buttons -->
+
+		<!-- Filters + Data Dictionary  -->
+
+		<div class="container clearfix">
+			<form action="getAll" method="GET" name="filter">
+				<select name="application">
+					<option selected value=""></option>
+					<c:forEach var="app" items="${applicationData}">
+						<option value="${app}">${app}</option>
+					</c:forEach>
+				</select> <select name="tableName">
+					<option selected value=""></option>
+					<c:forEach var="table" items="${tableData}">
+						<option value="${table}">${table}</option>
+					</c:forEach>
+				</select>
+				<button type="submit" class="btn btn-info">Filter</button>
+			</form>
+			<br />
 			<div class="row services">
 				<div class="col-md-12">
 					<h2 class="h1">Campaign Data</h2>
@@ -140,7 +144,6 @@
 				</div>
 			</div>
 		</div>
-	</section>
 	<section></section>
 	<!-- End of content -->
 	<!-- Footer -->
@@ -197,24 +200,18 @@
 </body>
 </html>
 
-<!-- <table border="1">
-		<tr>
-			<th>Application</th>
-			<th>Schema</th>
-			<th>Table</th>
-			<th>Column</th>
-			<th>Data Type</th>
-			<th>Description</th>
-		</tr>
-		<c:forEach var="data" items="${allData}">
-			<tr>
-				<td>${data.application}</td>
-				<td>${data.schemaName}</td>
-				<td>${data.tableName}</td>
-				<td>${data.columnName}</td>
-				<td>${data.dataType}</td>
-				<td>${data.description}</td>
-			</tr>
-		</c:forEach>
-		</table>
+<!-- <	<li class="navbar-form">
+					<form action="search" method="get">
+						<div class="input-group add-on">
+							<span class="input-group-btn"> <select name="searchFilter">
+									<option value="Table">Table</option>
+									<option value="Description">Description</option>
+							</select>
+							</span> <input type="text" name="searchKeyword" class="form-control" />
+							<span class="input-group-addon">
+								<button type="submit">Search</button>
+							</span>
+						</div>
+					</form>
+				</li>
 		 -->

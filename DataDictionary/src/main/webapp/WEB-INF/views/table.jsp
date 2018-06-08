@@ -52,6 +52,20 @@
 	</header>
 	<!-- End of Nav -->
 	<!-- Content -->
+	<li class="navbar-form">
+		<form action="search" method="get">
+			<div class="input-group add-on">
+				<span class="input-group-btn"> <select name="searchFilter">
+						<option value="Table">Table</option>
+						<option value="Description">Description</option>
+				</select>
+				</span> <input type="text" name="searchKeyword" class="form-control" /> <span
+					class="input-group-addon">
+					<button type="submit">Search</button>
+				</span>
+			</div>
+		</form>
+	</li>
 	<div class="container clearfix ">
 		<div class="btn-toolbar">
 			<a href="create" class="btn btn-primary" role="button">Create
@@ -59,6 +73,25 @@
 				Data</a>
 		</div>
 	</div>
+
+
+	<div class="btn-toolbar">
+		<form action="getAll" method="GET" name="filter">
+			<select name="application">
+				<option selected value=""></option>
+				<c:forEach var="app" items="${applicationData}">
+					<option value="${app}">${app}</option>
+				</c:forEach>
+			</select> <select name="tableName">
+				<option selected value=""></option>
+				<c:forEach var="table" items="${tableData}">
+					<option value="${table}">${table}</option>
+				</c:forEach>
+			</select>
+			<button type="submit" class="btn">Filter</button>
+		</form>
+	</div>
+
 	<section>
 		<div class="container clearfix">
 			<div class="row services">
@@ -95,7 +128,7 @@
 											<td>
 												<form action="updateView" method="post">
 													<input type="hidden" name="id" value="${data.id}" />
-													<button type="submit" class="btn btn-warning">Update</button>
+													<button type="submit" class="btn btn-primary">Update</button>
 												</form>
 											</td>
 										</tr>

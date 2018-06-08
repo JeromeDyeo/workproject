@@ -135,9 +135,9 @@ public class DataDictionaryService {
 				if (dataRow.getDataType() == null || dataRow.getDataType().isEmpty()) {
 					rowErrors.add("Missing/invalid data type");
 				} 
-				if (dataRow.getDescription() == null || dataRow.getDescription().isEmpty()) {
-					rowErrors.add("Missing/invalid description");
-				} 
+//				if (dataRow.getDescription() == null || dataRow.getDescription().isEmpty()) {
+//					rowErrors.add("Missing/invalid description");
+//				} 
 				if (!rowErrors.isEmpty()) {
 					error.put(row, rowErrors);
 					dataListClone.remove();
@@ -163,5 +163,45 @@ public class DataDictionaryService {
 	
 	public DataRow getById(int id) {
 		return dataDictionaryRepository.findById(id);
+	}
+	
+	public List<DataRow> getByApplication(String application) {
+		return dataDictionaryRepository.findByApplication(application);
+	}
+	
+	public List<DataRow> getByTableName(String tableName) {
+		return dataDictionaryRepository.findByTableName(tableName);
+	}
+	
+	public List<DataRow> getByApplicationAndTableName(String application, String tableName) {
+		return dataDictionaryRepository.findByApplicationAndTableName(application, tableName);
+	}
+	
+	public List<DataRow> searchByTableName(String searchKeyword) {
+		return dataDictionaryRepository.findByTableNameContaining(searchKeyword);
+	}
+	
+	public List<DataRow> searchByDescription(String searchKeyword) {
+		return dataDictionaryRepository.findByDescriptionContaining(searchKeyword);
+	}
+	
+	public List<String> getDistinctByApplication(ArrayList<DataRow> data) {
+		ArrayList<String> app = new ArrayList<>();
+		for (DataRow d : data) {
+			if (!app.contains(d.getApplication())) {
+				app.add(d.getApplication());
+			}
+		}
+		return app;
+	}
+	
+	public List<String> getDistinctByTableName(ArrayList<DataRow> data) {
+		ArrayList<String> tableName = new ArrayList<>();
+		for (DataRow d : data) {
+			if (!tableName.contains(d.getTableName())) {
+				tableName.add(d.getTableName());
+			}
+		}
+		return tableName;
 	}
 }

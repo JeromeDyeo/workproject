@@ -58,14 +58,6 @@ public class DataDictionaryController {
 		return mv;
 	}
 	
-	@GetMapping (value= "/getAll")
-	public ModelAndView getAllData() {
-		ModelAndView mv = new ModelAndView("table");
-		ArrayList<DataRow> allData = (ArrayList<DataRow>) dataDictionaryService.getAll();
-		mv.addObject("allData", allData);
-		return mv;
-	}
-	
 	@RequestMapping (value = {"/upload"}, method = RequestMethod.POST) 
 	public ModelAndView upload(@RequestPart(value = "file") MultipartFile multipartFile) throws IOException {
 		ModelAndView mv = new ModelAndView("uploadFile");
@@ -78,4 +70,51 @@ public class DataDictionaryController {
 		
 		return mv;
 	}
+	
+	@RequestMapping (value = {"/getAll"}, method = RequestMethod.GET)
+	public ModelAndView getAllData(@RequestParam(value = "application", required = false) String application, 
+			@RequestParam(value = "tableName", required = false) String tableName) {
+		ModelAndView mv = new ModelAndView("table");
+		ArrayList<DataRow> allData = new ArrayList<>();
+		if ((application == null || application.isEmpty()) && (tableName == null || tableName.isEmpty())) {
+			allData = (ArrayList<DataRow>) dataDictionaryService.getAll();
+		} else if (!(application == null || application.isEmpty()) && (tableName == null || tableName.isEmpty())) {
+			allData = (ArrayList<DataRow>) dataDictionaryService.getByApplication(application);
+		} else if ((application == null || application.isEmpty()) && !(tableName == null || tableName.isEmpty())) {
+			allData = (ArrayList<DataRow>) dataDictionaryService.getByTableName(tableName);
+		} else {
+			allData = (ArrayList<DataRow>) dataDictionaryService.getByApplicationAndTableName(application, tableName);
+		}
+		mv.addObject("allData", allData);
+		
+		ArrayList<DataRow> allDataUnfiltered = (ArrayList<DataRow>) dataDictionaryService.getAll();
+		ArrayList<String> applicationData = (ArrayList<String>) dataDictionaryService.getDistinctByApplication(allDataUnfiltered);
+		mv.addObject("applicationData", applicationData);
+		ArrayList<String> tableData = (ArrayList<String>) dataDictionaryService.getDistinctByTableName(allDataUnfiltered);
+		mv.addObject("tableData", tableData);
+		
+		return mv;
+	}
+	
+	@GetMapping(value = "/search")
+	public ModelAndView search(@RequestParam("searchFilter") String searchFilter,
+			@RequestParam("searchKeyword") String searchKeyword) {
+		ModelAndView mv = new ModelAndView("table");
+		ArrayList<DataRow> allData = new ArrayList<>();
+		if (searchFilter.equals("Table")) {
+			allData = (ArrayList<DataRow>) dataDictionaryService.searchByTableName(searchKeyword);
+		} else {
+			allData = (ArrayList<DataRow>) dataDictionaryService.searchByDescription(searchKeyword);
+		}
+		mv.addObject("allData", allData);
+		
+		ArrayList<DataRow> allDataUnfiltered = (ArrayList<DataRow>) dataDictionaryService.getAll();
+		ArrayList<String> applicationData = (ArrayList<String>) dataDictionaryService.getDistinctByApplication(allDataUnfiltered);
+		mv.addObject("applicationData", applicationData);
+		ArrayList<String> tableData = (ArrayList<String>) dataDictionaryService.getDistinctByTableName(allDataUnfiltered);
+		mv.addObject("tableData", tableData);
+		
+		return mv;
+	}
+	
 }

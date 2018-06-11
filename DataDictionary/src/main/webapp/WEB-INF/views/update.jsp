@@ -17,7 +17,8 @@
 	<div role="navigation" class="navbar navbar-default">
 		<div class="container">
 			<div class="navbar-header">
-				<a href="/" class="navbar-brand">NTUC Link.</a>
+				<a href="/" class="navbar-brand"><img src="img/logo.png" alt=""
+							class="img-responsive" height="200" width="200"></a>
 				<div class="navbar-buttons">
 					<button type="button" data-toggle="collapse"
 						data-target=".navbar-collapse" class="navbar-toggle navbar-btn">
@@ -76,6 +77,11 @@
 										value="${data.tableName}" /></th>
 								</tr>
 								<tr>
+									<th><label class="col-md-3">Table Type</label></th>
+									<th><input type="text" name="tableType"
+										value="${data.tableType}" /></th>
+								</tr>
+								<tr>
 									<th><label class="col-md-3">Column</label></th>
 									<th><input type="text" name="columnName"
 										value="${data.columnName}" /></th>
@@ -84,6 +90,26 @@
 									<th><label class="col-md-3">Data Type</label></th>
 									<th><input type="text" name="dataType"
 										value="${data.dataType}" /></th>
+								</tr>
+								<tr>
+									<th><label class="col-md-3">Default Value</label></th>
+									<th><input type="text" name="defaultValue"
+										value="${data.defaultValue}" /></th>
+								</tr>
+								<tr>
+									<th><label class="col-md-3">Column Key</label></th>
+									<th><input type="text" name="columnKey"
+										value="${data.columnKey}" /></th>
+								</tr>
+								<tr>
+									<th><label class="col-md-3">Null Able</label></th>
+									<th><input type="text" name="nullAble"
+										value="${data.nullAble}" /></th>
+								</tr>
+								<tr>
+									<th><label class="col-md-3">Auto Increment</label></th>
+									<th><input type="text" name="autoIncrement"
+										value="${data.autoIncrement}" /></th>
 								</tr>
 								<tr>
 									<th><label class="col-md-3">Description</label></th>

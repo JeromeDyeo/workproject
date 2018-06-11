@@ -20,11 +20,26 @@ public class DataRow {
 	@CsvBindByName (column = "Table")
 	private String tableName;
 	
+	@CsvBindByName (column = "Table Type")
+	private String tableType;
+	
 	@CsvBindByName (column = "Column")
 	private String columnName;
 	
 	@CsvBindByName (column = "Data Type")
 	private String dataType;
+	
+	@CsvBindByName (column = "Default Value")
+	private String defaultValue;
+	
+	@CsvBindByName (column = "Column Key")
+	private String columnKey;
+	
+	@CsvBindByName (column = "Null Able")
+	private String nullAble;
+	
+	@CsvBindByName (column = "Auto Increment")
+	private String autoIncrement;
 	
 	@CsvBindByName (column = "Description")
 	private String description;
@@ -87,6 +102,46 @@ public class DataRow {
 		this.description = description;
 	}
 
-	
+
+	public String getTableType() {
+		return tableType;
+	}
+
+	public void setTableType(String tableType) {
+		this.tableType = tableType;
+	}
+
+	public String getDefaultValue() {
+		return defaultValue;
+	}
+
+	public void setDefaultValue(String defaultValue) {
+		this.defaultValue = defaultValue;
+	}
+
+	public String getColumnKey() {
+		return columnKey;
+	}
+
+	public void setColumnKey(String columnKey) {
+		this.columnKey = columnKey;
+	}
+
+	public String getNullAble() {
+		return nullAble;
+	}
+
+	public void setNullAble(String nullAble) {
+		this.nullAble = nullAble;
+	}
+
+	public String getAutoIncrement() {
+		return autoIncrement;
+	}
+
+	public void setAutoIncrement(String autoIncrement) {
+		this.autoIncrement = autoIncrement;
+	}
+
 	
 }

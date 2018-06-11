@@ -16,6 +16,7 @@ NAVBAR
 */
 .header {
   width: 100%;
+  padding-bottom: 40px;
 }
 .navbar {
   text-transform: uppercase;
@@ -100,6 +101,7 @@ body {
 }
 header {
   z-index: 1000;
+  padding-bottom: 40px;
 }
 section {
   position: relative;

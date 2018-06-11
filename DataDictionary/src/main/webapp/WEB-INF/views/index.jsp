@@ -14,7 +14,8 @@
 	<div role="navigation" class="navbar navbar-default">
 		<div class="container">
 			<div class="navbar-header">
-				<a href="/" class="navbar-brand">NTUC Link.</a>
+				<a href="/" class="navbar-brand"><img src="img/logo.png" alt=""
+							class="img-responsive" height="200" width="200"></a>
 				<div class="navbar-buttons">
 					<button type="button" data-toggle="collapse"
 						data-target=".navbar-collapse" class="navbar-toggle navbar-btn">
@@ -47,8 +48,8 @@
 	<div class="jumbotron main-jumbotron">
 		<div class="container">
 			<div class="content">
-				<h1>Welcome to NTUC Link Campaign Site</h1>
-				<p class="margin-bottom">Put introduction Content</p>
+				<h1>NTUC Link Data Dictionary</h1>
+				<p class="margin-bottom">Data Dictionary for Meta-data</p>
 			</div>
 		</div>
 	</div>

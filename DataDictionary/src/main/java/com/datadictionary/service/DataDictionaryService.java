@@ -135,6 +135,12 @@ public class DataDictionaryService {
 				if (dataRow.getDataType() == null || dataRow.getDataType().isEmpty()) {
 					rowErrors.add("Missing/invalid data type");
 				} 
+//				if (dataRow.getTableType() == null || dataRow.getTableType().isEmpty()) {
+//					rowErrors.add("Missing/invalid table type");
+//				} 
+//				if (dataRow.getNullAble() == null || dataRow.getNullAble().isEmpty()) {
+//					rowErrors.add("Missing/invalid null able");
+//				} 
 //				if (dataRow.getDescription() == null || dataRow.getDescription().isEmpty()) {
 //					rowErrors.add("Missing/invalid description");
 //				} 

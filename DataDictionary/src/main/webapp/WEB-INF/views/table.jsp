@@ -12,8 +12,10 @@
 <link rel="stylesheet" href="/css/bootstrap.min.css">
 <link rel="stylesheet" href="/css/style.default.css">
 <link rel="stylesheet" href="/css/pe-icon-7-stroke.css">
-<script
-	src='http://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.3/jquery.min.js'></script>
+<script type="text/javascript" charset="utf8" src="js/jquery-3.3.1.min.js"></script>
+<link rel="stylesheet" type="text/css" href="css/datatables.min.css">
+<script type="text/javascript" charset="utf8" src="js/datatables.min.js"></script>
+
 </head>
 
 <body>
@@ -22,7 +24,8 @@
 		<div role="navigation" class="navbar navbar-default">
 			<div class="container">
 				<div class="navbar-header">
-					<a href="/" class="navbar-brand">NTUC Link.</a>
+					<a href="/" class="navbar-brand"><img src="img/logo.png" alt=""
+						class="img-responsive" height="200" width="200"></a>
 					<div class="navbar-buttons">
 						<button type="button" data-toggle="collapse"
 							data-target=".navbar-collapse" class="navbar-toggle navbar-btn">
@@ -53,97 +56,109 @@
 	<!-- End of Nav -->
 	<!-- Search Filter + Create/Upload buttons -->
 
-		<div class="container clearfix">
-			<div class="row">
-				<div class="col-md-6">
-					<div class="btn-toolbar">
-						<a href="create" class="btn btn-primary" role="button">Create
-							Entry</a> <a href="uploadFile" class="btn btn-info" role="button">Upload
-							Data</a>
-					</div>
-				</div>
-				<div class="col-md-6">
-					<form action="search" method="get">
-						<div class="input-group">
-							<select name="searchFilter">
-								<option value="Table">Table</option>
-								<option value="Description ">Description</option>
-							</select> <input type="text" name="searchKeyword" class="form-control">
-							<span class="input-group-btn">
-								<button type="submit" class="btn btn-info"
-									style="margin-top: 18px; min-height: 36px;">Search</button>
-							</span>
-						</div>
-					</form>
+	<div class="container clearfix">
+		<div class="row">
+			<div class="col-md-6">
+				<div class="btn-toolbar">
+					<a href="create" class="btn btn-primary" role="button">Create
+						Entry</a> <a href="uploadFile" class="btn btn-info" role="button">Upload
+						Data</a>
 				</div>
 			</div>
+			<div class="col-md-6">
+				<form action="search" method="get">
+					<div class="input-group">
+						<select name="searchFilter">
+							<option value="Table">Table</option>
+							<option value="Description ">Description</option>
+						</select> <input type="text" name="searchKeyword" class="form-control">
+						<span class="input-group-btn">
+							<button type="submit" class="btn btn-info"
+								style="margin-top: 18px; min-height: 36px;">Search</button>
+						</span>
+					</div>
+				</form>
+			</div>
 		</div>
-		<!-- End of  Filter +  buttons -->
+	</div>
+	<!-- End of  Filter +  buttons -->
 
-		<!-- Filters + Data Dictionary  -->
+	<!-- Filters + Data Dictionary  -->
 
-		<div class="container clearfix">
-			<form action="getAll" method="GET" name="filter">
-				<select name="application">
-					<option selected value=""></option>
-					<c:forEach var="app" items="${applicationData}">
-						<option value="${app}">${app}</option>
-					</c:forEach>
-				</select> <select name="tableName">
-					<option selected value=""></option>
-					<c:forEach var="table" items="${tableData}">
-						<option value="${table}">${table}</option>
-					</c:forEach>
-				</select>
-				<button type="submit" class="btn btn-info">Filter</button>
-			</form>
-			<br />
-			<div class="row services">
-				<div class="col-md-12">
-					<h2 class="h1">Campaign Data</h2>
-					<div class="row">
-						<div class="table-responsive">
-							<table class="table table-hover">
-								<thead>
+	<div class="container clearfix">
+		<form action="getAll" method="GET" name="filter">
+			<select name="application">
+				<option selected value=""></option>
+				<c:forEach var="app" items="${applicationData}">
+					<option value="${app}">${app}</option>
+				</c:forEach>
+			</select> <select name="tableName">
+				<option selected value=""></option>
+				<c:forEach var="table" items="${tableData}">
+					<option value="${table}">${table}</option>
+				</c:forEach>
+			</select>
+			<button type="submit" class="btn btn-info">Filter</button>
+		</form>
+		<br />
+		<div class="row services">
+			<div class="col-md-12">
+				<h2 class="h1">Campaign Data</h2>
+				<div class="row">
+					<div class="table-responsive">
+						<table id="table_id" class="display">
+							<thead>
+								<tr>
+									<th>Application</th>
+									<th>Schema</th>
+									<th>Table</th>
+									<th>Table Type</th>
+									<th>Column</th>
+									<th>Data Type</th>
+									<th>Default Value</th>
+									<th>Column Key</th>
+									<th>Null Able</th>
+									<th>Auto Increment</th>
+									<th>Description</th>
+									<th>Delete</th>
+									<th>Update</th>
+								</tr>
+							</thead>
+							<tbody>
+								<c:forEach var="data" items="${allData}">
 									<tr>
-										<th>Application</th>
-										<th>Schema</th>
-										<th>Table</th>
-										<th>Column</th>
-										<th>Data Type</th>
-										<th>Description</th>
+										<!-- <th scope="row"></th>  -->
+										<td>${data.application}</td>
+										<td>${data.schemaName}</td>
+										<td>${data.tableName}</td>
+										<td>${data.tableType}</td>
+										<td>${data.columnName}</td>
+										<td>${data.dataType}</td>
+										<td>${data.defaultValue}</td>
+										<td>${data.columnKey}</td>
+										<td>${data.nullAble}</td>
+										<td>${data.autoIncrement}</td>
+										<td>${data.description}</td>
+										<td>
+											<button type="button" data-id="${data.id}"
+												class="open-deleteProductModal btn btn-danger"
+												data-toggle="modal" data-target="#deleteProductModal">Delete</button>
+										</td>
+										<td>
+											<form action="updateView" method="post">
+												<input type="hidden" name="id" value="${data.id}" />
+												<button type="submit" class="btn btn-primary">Update</button>
+											</form>
+										</td>
 									</tr>
-								</thead>
-								<tbody>
-									<c:forEach var="data" items="${allData}">
-										<tr>
-											<!-- <th scope="row"></th>  -->
-											<td>${data.application}</td>
-											<td>${data.schemaName}</td>
-											<td>${data.tableName}</td>
-											<td>${data.columnName}</td>
-											<td>${data.dataType}</td>
-											<td>${data.description}</td>
-											<td>
-												<button type="button" data-id="${data.id}"
-													class="open-deleteProductModal btn btn-danger"
-													data-toggle="modal" data-target="#deleteProductModal">Delete</button>
-											</td>
-											<td>
-												<form action="updateView" method="post">
-													<input type="hidden" name="id" value="${data.id}" />
-													<button type="submit" class="btn btn-primary">Update</button>
-												</form>
-											</td>
-										</tr>
-									</c:forEach>
-								</tbody>
-							</table>
-						</div>
+								</c:forEach>
+							</tbody>
+						</table>
 					</div>
 				</div>
 			</div>
 		</div>
+	</div>
 	<section></section>
 	<!-- End of content -->
 	<!-- Footer -->
@@ -192,8 +207,14 @@
 		});
 	</script>
 
-	<script
-		src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>
+	<script>
+		$(document).ready(function() {
+			$('#table_id').DataTable();
+		});
+	</script>
+<!-- 	<script -->
+<!-- 		src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script> -->
+<!-- 	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script> -->
 	<script src="/js/bootstrap.min.js"></script>
 	<script src="/js/jquery.cookie.js"></script>
 	<script src="/js/front.js"></script>

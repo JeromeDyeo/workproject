@@ -66,9 +66,9 @@
 							class="img-responsive"></a>
 					</div>
 					<h3>
-						<a href="getAll">Display Data Dictionary</a>
+						<a href="getAll">Display Campaign Data</a>
 					</h3>
-					<p class="post__intro">Retrieve all data that is in the
+					<p class="post__intro">Retrieve all data that are in the
 						database</p>
 				</div>
 			</div>
@@ -79,7 +79,7 @@
 							class="img-responsive"></a>
 					</div>
 					<h3>
-						<a href="uploadFile">Upload to Data Dictionary</a>
+						<a href="uploadFile">Upload Campaign Data </a>
 					</h3>
 					<p class="post__intro">
 					<p>Too much data? Place them in Excel and we convert them for
@@ -93,7 +93,7 @@
 							class="img-responsive"></a>
 					</div>
 					<h3>
-						<a href="create">Create Data Dictionary Data</a>
+						<a href="create">Create Campaign Data </a>
 					</h3>
 					<p class="post__intro">
 					<p>Show create campaign data page</p>

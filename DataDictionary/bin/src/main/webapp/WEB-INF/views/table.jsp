@@ -8,7 +8,7 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-<title>NTUC Link - Data Dictionary</title>
+<title>Ntuc Link - Campaign</title>
 <link rel="stylesheet" href="/css/bootstrap.min.css">
 <link rel="stylesheet" href="/css/style.default.css">
 <link rel="stylesheet" href="/css/pe-icon-7-stroke.css">
@@ -65,20 +65,20 @@
 						Data</a>
 				</div>
 			</div>
-<!-- 			<div class="col-md-6"> -->
-<!-- 				<form action="search" method="get"> -->
-<!-- 					<div class="input-group"> -->
-<!-- 						<select name="searchFilter"> -->
-<!-- 							<option value="Table">Table</option> -->
-<!-- 							<option value="Description ">Description</option> -->
-<!-- 						</select> <input type="text" name="searchKeyword" class="form-control"> -->
-<!-- 						<span class="input-group-btn"> -->
-<!-- 							<button type="submit" class="btn btn-info" -->
-<!-- 								style="margin-top: 18px; min-height: 36px;">Search</button> -->
-<!-- 						</span> -->
-<!-- 					</div> -->
-<!-- 				</form> -->
-<!-- 			</div> -->
+			<div class="col-md-6">
+				<form action="search" method="get">
+					<div class="input-group">
+						<select name="searchFilter">
+							<option value="Table">Table</option>
+							<option value="Description ">Description</option>
+						</select> <input type="text" name="searchKeyword" class="form-control">
+						<span class="input-group-btn">
+							<button type="submit" class="btn btn-info"
+								style="margin-top: 18px; min-height: 36px;">Search</button>
+						</span>
+					</div>
+				</form>
+			</div>
 		</div>
 	</div>
 	<!-- End of  Filter +  buttons -->
@@ -86,16 +86,13 @@
 	<!-- Filters + Data Dictionary  -->
 
 	<div class="container clearfix">
-	<h4>Filter Data</h4><br>
 		<form action="getAll" method="GET" name="filter">
-		<h6>Application/Table</h6>
 			<select name="application">
 				<option selected value=""></option>
 				<c:forEach var="app" items="${applicationData}">
 					<option value="${app}">${app}</option>
 				</c:forEach>
-			</select> 
-			<select name="tableName">
+			</select> <select name="tableName">
 				<option selected value=""></option>
 				<c:forEach var="table" items="${tableData}">
 					<option value="${table}">${table}</option>
@@ -106,7 +103,7 @@
 		<br />
 		<div class="row services">
 			<div class="col-md-12">
-				<h2 class="h1">Data Dictionary</h2>
+				<h2 class="h1">Campaign Data</h2>
 				<div class="row">
 					<div class="table-responsive">
 						<table id="table_id" class="display">

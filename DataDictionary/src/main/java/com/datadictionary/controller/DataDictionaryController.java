@@ -14,7 +14,9 @@ import org.springframework.web.bind.annotation.RequestPart;
 import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.servlet.ModelAndView;
 
+import com.datadictionary.entity.ApplicationDetail;
 import com.datadictionary.entity.DataRow;
+import com.datadictionary.service.ApplicationService;
 import com.datadictionary.service.DataDictionaryService;
 
 @Controller
@@ -23,11 +25,16 @@ public class DataDictionaryController {
 	@Autowired
 	private DataDictionaryService dataDictionaryService;
 	
+	@Autowired
+	private ApplicationService applicationService;
+	
 	@RequestMapping (value = {"/create"}, method = RequestMethod.POST)
-	public ModelAndView createDataRow(@ModelAttribute("dataRow") DataRow dataRow) {
+	public ModelAndView createDataRow(@ModelAttribute("dataRow") DataRow dataRow, 
+			@ModelAttribute("applicationDetail") ApplicationDetail applicationDetail) {
 		ModelAndView mv = new ModelAndView("redirect:getAll");
+		dataRow.setApplicationDetail(applicationDetail);
 		dataDictionaryService.create(dataRow);
-		
+		applicationService.create(applicationDetail);
 		return mv;
 	}
 	
@@ -47,14 +54,18 @@ public class DataDictionaryController {
 	public ModelAndView updateView(@RequestParam("id") int id) {
 		ModelAndView mv = new ModelAndView("update");
 		DataRow dataRow = dataDictionaryService.getById(id);
+		ApplicationDetail applicationDetail = applicationService.getById(dataRow.getApplicationDetail().getId());
 		mv.addObject("data", dataRow);
+		mv.addObject("application", applicationDetail);
 		return mv;
 	}
 	
 	@RequestMapping (value = {"/update"}, method = RequestMethod.POST)
-	public ModelAndView updateDataRow(@ModelAttribute("dataRow") DataRow dataRow) {
+	public ModelAndView updateDataRow(@ModelAttribute("dataRow") DataRow dataRow, 
+			@ModelAttribute("applicationDetail") ApplicationDetail applicationDetail) {
 		ModelAndView mv = new ModelAndView("redirect:getAll");
-		DataRow updated = dataDictionaryService.update(dataRow);
+		DataRow updatedData = dataDictionaryService.update(dataRow);
+		ApplicationDetail updatedApplication = applicationService.update(applicationDetail);
 		return mv;
 	}
 	

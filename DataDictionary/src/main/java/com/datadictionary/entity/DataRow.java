@@ -11,8 +11,7 @@ public class DataRow {
 	
 	private int id;
 	
-	@CsvBindByName (column = "Application")
-	private String application;
+	private ApplicationDetail applicationDetail;
 	
 	@CsvBindByName (column = "Schema")
 	private String schemaName;
@@ -45,7 +44,7 @@ public class DataRow {
 	private String description;
 	
 	@Id
-	@Column(name = "id")
+	@Column(name = "did")
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	public int getId() {
 		return this.id;
@@ -54,12 +53,15 @@ public class DataRow {
 	public void setId(int id) {
 		this.id = id;
 	}
-	public String getApplication() {
-		return application;
+	
+	@ManyToOne(fetch = FetchType.LAZY)
+	@JoinColumn(name = "aid")
+	public ApplicationDetail getApplicationDetail() {
+		return applicationDetail;
 	}
 
-	public void setApplication(String application) {
-		this.application = application;
+	public void setApplicationDetail(ApplicationDetail applicationDetail) {
+		this.applicationDetail = applicationDetail;
 	}
 
 	public String getSchemaName() {

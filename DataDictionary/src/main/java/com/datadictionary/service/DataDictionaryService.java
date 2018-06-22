@@ -54,20 +54,33 @@ public class DataDictionaryService {
 		
 		try {
 			DataRow updateRow = dataDictionaryRepository.findById(dataRow.getId());
-			if (!dataRow.getApplication().isEmpty()) {
-				updateRow.setApplication(dataRow.getApplication());
-			}
+			
 			if (!dataRow.getSchemaName().isEmpty()) {
 				updateRow.setSchemaName(dataRow.getSchemaName());
 			}
 			if (!dataRow.getTableName().isEmpty()) {
 				updateRow.setTableName(dataRow.getTableName());
 			}
+			if (!dataRow.getTableType().isEmpty()) {
+				updateRow.setTableName(dataRow.getTableType());
+			}
 			if (!dataRow.getColumnName().isEmpty()) {
 				updateRow.setColumnName(dataRow.getColumnName());
 			}
 			if (!dataRow.getDataType().isEmpty()) {
 				updateRow.setDataType(dataRow.getDataType());
+			}
+			if (!dataRow.getDefaultValue().isEmpty()) {
+				updateRow.setDataType(dataRow.getDefaultValue());
+			}
+			if (!dataRow.getColumnKey().isEmpty()) {
+				updateRow.setDataType(dataRow.getColumnKey());
+			}
+			if (!dataRow.getNullAble().isEmpty()) {
+				updateRow.setDataType(dataRow.getNullAble());
+			}
+			if (!dataRow.getAutoIncrement().isEmpty()) {
+				updateRow.setDataType(dataRow.getAutoIncrement());
 			}
 			if (!dataRow.getDescription().isEmpty()) {
 				updateRow.setDescription(dataRow.getDescription());
@@ -110,7 +123,7 @@ public class DataDictionaryService {
 			CsvToBean<DataRow> csvToBean = new CsvToBeanBuilder<DataRow>(reader).withType(DataRow.class)
 					.withIgnoreLeadingWhiteSpace(true).build();
 			List<DataRow> dataList = csvToBean.parse();
-
+			
 			Iterator<DataRow> dataListClone = dataList.iterator();
 			
 			int row = 0;

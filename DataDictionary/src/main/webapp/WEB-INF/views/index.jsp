@@ -45,7 +45,7 @@
 	</header>
 	<!-- End of Nav -->
 	<!-- Introduction -->
-	<div class="jumbotron main-jumbotron">
+	<div class="jumbotron main-jumbotron" style="padding-bottom: 20px; padding-top: 40px;">
 		<div class="container">
 			<div class="content">
 				<h1>NTUC Link Data Dictionary</h1>

@@ -4,6 +4,8 @@ import java.util.Set;
 
 import javax.persistence.*;
 
+import org.hibernate.annotations.ColumnDefault;
+
 import com.opencsv.bean.CsvBindByName;
 
 @Entity
@@ -16,7 +18,8 @@ public class ApplicationDetail {
 	@CsvBindByName (column = "Application")
 	private String application;
 	
-	private String imagePath;
+	@CsvBindByName (column = "imagepath", required = false)
+	private String imagePath = null;
 	
 	private Set<DataRow> dataRow;
 	

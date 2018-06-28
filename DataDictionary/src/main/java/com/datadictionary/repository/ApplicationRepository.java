@@ -12,7 +12,9 @@ import com.datadictionary.entity.DataRow;
 public interface ApplicationRepository extends CrudRepository<ApplicationDetail, Integer> {
 
 	public ApplicationDetail findById (int id);
+	public ApplicationDetail findByApplication (String application);
 	public void delete (ApplicationDetail applicationDetail);
     public boolean existsById (int id);
+    public boolean existsByApplication(String application);
     public List<ApplicationDetail> findAll();
 }

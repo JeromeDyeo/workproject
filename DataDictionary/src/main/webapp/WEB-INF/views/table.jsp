@@ -131,7 +131,7 @@
 								<c:forEach var="data" items="${allData}">
 									<tr>
 										<!-- <th scope="row"></th>  -->
-										<td>${data.application}</td>
+										<td>${data.applicationDetail.application}</td>
 										<td>${data.schemaName}</td>
 										<td>${data.tableName}</td>
 										<td>${data.tableType}</td>

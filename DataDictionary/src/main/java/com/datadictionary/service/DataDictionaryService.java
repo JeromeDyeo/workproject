@@ -15,7 +15,9 @@ import org.springframework.dao.EmptyResultDataAccessException;
 import org.springframework.stereotype.Service;
 import org.springframework.web.multipart.MultipartFile;
 
+import com.datadictionary.entity.ApplicationDetail;
 import com.datadictionary.entity.DataRow;
+import com.datadictionary.repository.ApplicationRepository;
 import com.datadictionary.repository.DataDictionaryRepository;
 import com.opencsv.bean.CsvToBean;
 import com.opencsv.bean.CsvToBeanBuilder;
@@ -26,6 +28,9 @@ public class DataDictionaryService {
 
 	@Autowired
 	private DataDictionaryRepository dataDictionaryRepository;
+	
+	@Autowired
+	private ApplicationRepository applicationRepository;
 	
 	public DataRow create(DataRow dataRow) {
 		DataRow createdRow;
@@ -117,25 +122,41 @@ public class DataDictionaryService {
 			if (reader.read() != 0xFEFF) {
 				reader.reset();
 			}
-				
+			
+			Reader reader2 = new BufferedReader(new InputStreamReader(new FileInputStream(file), "UTF-8"));
+			reader2.mark(1);
+			if (reader2.read() != 0xFEFF) {
+				reader2.reset();
+			}
 //			CsvToBean<DataRow> csvToBean = new CsvToBeanBuilder<DataRow>(reader).withType(DataRow.class)
 //					.withIgnoreLeadingWhiteSpace(true).withMappingStrategy(strategy).build();
 			CsvToBean<DataRow> csvToBean = new CsvToBeanBuilder<DataRow>(reader).withType(DataRow.class)
 					.withIgnoreLeadingWhiteSpace(true).build();
 			List<DataRow> dataList = csvToBean.parse();
 			
+			CsvToBean<ApplicationDetail> csvToBean2 = new CsvToBeanBuilder<ApplicationDetail>(reader2).withType(ApplicationDetail.class)
+					.withIgnoreLeadingWhiteSpace(true).build();
+			List<ApplicationDetail> dataList2 = csvToBean2.parse();
+			
 			Iterator<DataRow> dataListClone = dataList.iterator();
+			//Iterator<ApplicationDetail> dataList2Clone = dataList2.iterator();
 			
 			int row = 0;
+			
+			List<DataRow> saveList = new ArrayList<>();
 			
 			while (dataListClone.hasNext()) {
 				row++;
 				DataRow dataRow = dataListClone.next();
+				ApplicationDetail applicationDetail = dataList2.get(row-1);
+				String application = applicationDetail.getApplication();
+				if (applicationRepository.existsByApplication(application)) {
+					applicationDetail = applicationRepository.findByApplication(application);
+				} else {
+					applicationRepository.save(applicationDetail);
+				}
 				ArrayList<String> rowErrors = new ArrayList<>();
 				
-				if (dataRow.getApplication() == null || dataRow.getApplication().isEmpty()) {
-					rowErrors.add("Missing/invalid application");
-				} 
 				if (dataRow.getSchemaName() == null || dataRow.getSchemaName().isEmpty()) {
 					rowErrors.add("Missing/invalid schema");
 				} 
@@ -160,10 +181,22 @@ public class DataDictionaryService {
 				if (!rowErrors.isEmpty()) {
 					error.put(row, rowErrors);
 					dataListClone.remove();
+				} else {
+					dataRow.setApplicationDetail(applicationDetail);
+					saveList.add(dataRow);
+					
+					Set<DataRow> dataRows = Collections.emptySet();
+					if (applicationDetail.getDataRow() != null) {
+						dataRows = applicationDetail.getDataRow();
+					}
+					
+					dataRows.add(dataRow);
+					applicationDetail.setDataRow(dataRows);
+					applicationRepository.save(applicationDetail);
 				}
 			}
 
-			dataDictionaryRepository.saveAll(dataList);
+			dataDictionaryRepository.saveAll(saveList);
 		}
 		return error;
 	}
@@ -185,7 +218,8 @@ public class DataDictionaryService {
 	}
 	
 	public List<DataRow> getByApplication(String application) {
-		return dataDictionaryRepository.findByApplication(application);
+		ApplicationDetail applicationDetail = applicationRepository.findByApplication(application);
+		return dataDictionaryRepository.findByApplicationDetail(applicationDetail);
 	}
 	
 	public List<DataRow> getByTableName(String tableName) {
@@ -193,7 +227,8 @@ public class DataDictionaryService {
 	}
 	
 	public List<DataRow> getByApplicationAndTableName(String application, String tableName) {
-		return dataDictionaryRepository.findByApplicationAndTableName(application, tableName);
+		ApplicationDetail applicationDetail = applicationRepository.findByApplication(application);
+		return dataDictionaryRepository.findByApplicationDetailAndTableName(applicationDetail, tableName);
 	}
 	
 	public List<DataRow> searchByTableName(String searchKeyword) {
@@ -202,16 +237,6 @@ public class DataDictionaryService {
 	
 	public List<DataRow> searchByDescription(String searchKeyword) {
 		return dataDictionaryRepository.findByDescriptionContaining(searchKeyword);
-	}
-	
-	public List<String> getDistinctByApplication(ArrayList<DataRow> data) {
-		ArrayList<String> app = new ArrayList<>();
-		for (DataRow d : data) {
-			if (!app.contains(d.getApplication())) {
-				app.add(d.getApplication());
-			}
-		}
-		return app;
 	}
 	
 	public List<String> getDistinctByTableName(ArrayList<DataRow> data) {

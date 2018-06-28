@@ -99,7 +99,7 @@ public class DataDictionaryController {
 		mv.addObject("allData", allData);
 		
 		ArrayList<DataRow> allDataUnfiltered = (ArrayList<DataRow>) dataDictionaryService.getAll();
-		ArrayList<String> applicationData = (ArrayList<String>) dataDictionaryService.getDistinctByApplication(allDataUnfiltered);
+		ArrayList<String> applicationData = (ArrayList<String>) applicationService.getDistinctByApplication();
 		mv.addObject("applicationData", applicationData);
 		ArrayList<String> tableData = (ArrayList<String>) dataDictionaryService.getDistinctByTableName(allDataUnfiltered);
 		mv.addObject("tableData", tableData);
@@ -120,7 +120,7 @@ public class DataDictionaryController {
 		mv.addObject("allData", allData);
 		
 		ArrayList<DataRow> allDataUnfiltered = (ArrayList<DataRow>) dataDictionaryService.getAll();
-		ArrayList<String> applicationData = (ArrayList<String>) dataDictionaryService.getDistinctByApplication(allDataUnfiltered);
+		ArrayList<String> applicationData = (ArrayList<String>) applicationService.getDistinctByApplication();
 		mv.addObject("applicationData", applicationData);
 		ArrayList<String> tableData = (ArrayList<String>) dataDictionaryService.getDistinctByTableName(allDataUnfiltered);
 		mv.addObject("tableData", tableData);

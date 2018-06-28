@@ -1,5 +1,7 @@
 package com.datadictionary.service;
 
+import java.util.ArrayList;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -44,5 +46,18 @@ public class ApplicationService {
 
 	public ApplicationDetail getById(int id) {
 		return applicationRepository.findById(id);
+	}
+	
+	public ArrayList<String> getDistinctByApplication() {
+		ArrayList<String> distinctApplication = new ArrayList<>();
+		
+		ArrayList<ApplicationDetail> all = (ArrayList<ApplicationDetail>) applicationRepository.findAll();
+		
+		for (ApplicationDetail a : all) {
+			if (!distinctApplication.contains(a.getApplication())) {
+				distinctApplication.add(a.getApplication());
+			}
+		}
+		return distinctApplication;
 	}
 }

@@ -99,8 +99,6 @@ public class DataDictionaryController {
 		mv.addObject("allData", allData);
 		
 		ArrayList<DataRow> allDataUnfiltered = (ArrayList<DataRow>) dataDictionaryService.getAll();
-		ArrayList<String> applicationData = (ArrayList<String>) applicationService.getDistinctByApplication();
-		mv.addObject("applicationData", applicationData);
 		ArrayList<String> tableData = (ArrayList<String>) dataDictionaryService.getDistinctByTableName(allDataUnfiltered);
 		mv.addObject("tableData", tableData);
 		
@@ -120,12 +118,21 @@ public class DataDictionaryController {
 		mv.addObject("allData", allData);
 		
 		ArrayList<DataRow> allDataUnfiltered = (ArrayList<DataRow>) dataDictionaryService.getAll();
-		ArrayList<String> applicationData = (ArrayList<String>) applicationService.getDistinctByApplication();
-		mv.addObject("applicationData", applicationData);
 		ArrayList<String> tableData = (ArrayList<String>) dataDictionaryService.getDistinctByTableName(allDataUnfiltered);
 		mv.addObject("tableData", tableData);
 		
 		return mv;
 	}
 	
+	@RequestMapping (value = {"/getByApplicationAndSchema"}, method = RequestMethod.GET)
+	public ModelAndView getByApplicationAndSchema(@RequestParam("application") String applicationDetail,
+			@RequestParam("schema") String schemaName) {
+		ModelAndView mv = new ModelAndView("table");
+		ArrayList<DataRow> allData = (ArrayList<DataRow>) dataDictionaryService.getByApplicationAndSchemaName(applicationDetail, schemaName);
+		mv.addObject("allData", allData);
+		
+		ArrayList<String> tableData = (ArrayList<String>) dataDictionaryService.getDistinctByTableName(allData);
+		mv.addObject("tableData", tableData);
+		return mv;
+	}
 }

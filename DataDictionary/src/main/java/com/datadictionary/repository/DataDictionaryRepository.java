@@ -16,6 +16,7 @@ public interface DataDictionaryRepository extends CrudRepository<DataRow, Intege
 	public List<DataRow> findByApplicationDetail(ApplicationDetail application);
 	public List<DataRow> findByTableName(String tableName);
 	public List<DataRow> findByApplicationDetailAndTableName(ApplicationDetail application, String tableName);
+	public List<DataRow> findByApplicationDetailAndSchemaName(ApplicationDetail application, String schemaName);
 	public List<DataRow> findByTableNameContaining(String searchKeyword);
 	public List<DataRow> findByDescriptionContaining(String searchKeyword);
     public void delete (DataRow dataRow);

@@ -62,11 +62,11 @@
 			<div class="col-sm-4">
 				<div class="post">
 					<div class="image">
-						<a href="getAll"><img src="img/data.jpg" alt=""
+						<a href="getApplications"><img src="img/data.jpg" alt=""
 							class="img-responsive"></a>
 					</div>
 					<h3>
-						<a href="getAll">Display Data Dictionary</a>
+						<a href="getApplications">Display Data Dictionary</a>
 					</h3>
 					<p class="post__intro">Retrieve all data that is in the
 						database</p>

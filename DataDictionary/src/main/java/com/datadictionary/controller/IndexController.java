@@ -36,6 +36,11 @@ public class IndexController implements ErrorController {
         return new ModelAndView("update");
     }
 	
+	@RequestMapping(value = {"applications"})
+    public ModelAndView applications() {
+        return new ModelAndView("applications");
+    }
+	
 	@RequestMapping(value = PATH)
     public ModelAndView error() {
         return new ModelAndView("error/404");

@@ -189,7 +189,9 @@ public class DataDictionaryService {
 					if (applicationDetail.getDataRow() != null) {
 						dataRows = applicationDetail.getDataRow();
 					}
-					
+					if (dataRows.contains(dataRow)) {
+						dataRows.remove(dataRow);
+					}
 					dataRows.add(dataRow);
 					applicationDetail.setDataRow(dataRows);
 					applicationRepository.save(applicationDetail);
@@ -229,6 +231,11 @@ public class DataDictionaryService {
 	public List<DataRow> getByApplicationAndTableName(String application, String tableName) {
 		ApplicationDetail applicationDetail = applicationRepository.findByApplication(application);
 		return dataDictionaryRepository.findByApplicationDetailAndTableName(applicationDetail, tableName);
+	}
+	
+	public List<DataRow> getByApplicationAndSchemaName(String application, String schemaName) {
+		ApplicationDetail applicationDetail = applicationRepository.findByApplication(application);
+		return dataDictionaryRepository.findByApplicationDetailAndSchemaName(applicationDetail, schemaName);
 	}
 	
 	public List<DataRow> searchByTableName(String searchKeyword) {

@@ -60,9 +60,8 @@
 		<div class="row">
 			<div class="col-md-6">
 				<div class="btn-toolbar">
-					<a href="create" class="btn btn-primary" role="button">Create
-						Entry</a> <a href="uploadFile" class="btn btn-info" role="button">Upload
-						Data</a>
+					 <a href="uploadImage" class="btn btn-info" role="button">Upload
+						Image</a>
 				</div>
 			</div>
 <!-- 			<div class="col-md-6"> -->
@@ -86,75 +85,10 @@
 	<!-- Filters + Data Dictionary  -->
 
 	<div class="container clearfix">
-	<h4>Filter Data</h4><br>
-		<form action="getAll" method="GET" name="filter">
-		<h6>Table</h6>
-			<select name="tableName">
-				<option selected value=""></option>
-				<c:forEach var="table" items="${tableData}">
-					<option value="${table}">${table}</option>
-				</c:forEach>
-			</select>
-			<button type="submit" class="btn btn-info">Filter</button>
-		</form>
-		<br />
-		<div class="row services">
-			<div class="col-md-12">
-				<h2 class="h1">Data Dictionary</h2>
-				<div class="row">
-					<div class="table-responsive">
-						<table id="table_id" class="display">
-							<thead>
-								<tr>
-									<th>Application</th>
-									<th>Schema</th>
-									<th>Table</th>
-									<th>Table Type</th>
-									<th>Column</th>
-									<th>Data Type</th>
-									<th>Default Value</th>
-									<th>Column Key</th>
-									<th>Null Able</th>
-									<th>Auto Increment</th>
-									<th>Description</th>
-									<th>Delete</th>
-									<th>Update</th>
-								</tr>
-							</thead>
-							<tbody>
-								<c:forEach var="data" items="${allData}">
-									<tr>
-										<!-- <th scope="row"></th>  -->
-										<td>${data.applicationDetail.application}</td>
-										<td>${data.schemaName}</td>
-										<td>${data.tableName}</td>
-										<td>${data.tableType}</td>
-										<td>${data.columnName}</td>
-										<td>${data.dataType}</td>
-										<td>${data.defaultValue}</td>
-										<td>${data.columnKey}</td>
-										<td>${data.nullAble}</td>
-										<td>${data.autoIncrement}</td>
-										<td>${data.description}</td>
-										<td>
-											<button type="button" data-id="${data.id}"
-												class="open-deleteProductModal btn btn-danger"
-												data-toggle="modal" data-target="#deleteProductModal">Delete</button>
-										</td>
-										<td>
-											<form action="updateView" method="post">
-												<input type="hidden" name="id" value="${data.id}" />
-												<button type="submit" class="btn btn-primary">Update</button>
-											</form>
-										</td>
-									</tr>
-								</c:forEach>
-							</tbody>
-						</table>
-					</div>
-				</div>
-			</div>
-		</div>
+		<h6>All Applications</h6>
+		<c:forEach var="schema" items="${schemas}">
+			<a href="getByApplicationAndSchema?schema=${schema}&application=${application}" class="btn btn-info" role="button">${schema}</a>
+		</c:forEach>
 	</div>
 	<section></section>
 	<!-- End of content -->

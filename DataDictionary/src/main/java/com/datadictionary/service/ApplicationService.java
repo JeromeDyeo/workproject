@@ -1,6 +1,7 @@
 package com.datadictionary.service;
 
 import java.util.ArrayList;
+import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -59,5 +60,13 @@ public class ApplicationService {
 			}
 		}
 		return distinctApplication;
+	}
+	
+	public List<ApplicationDetail> getAll() {
+		return applicationRepository.findAll();
+	}
+	
+	public ApplicationDetail getByApplication(String application) {
+		return applicationRepository.findByApplication(application);
 	}
 }

@@ -50,8 +50,8 @@
 
 
 	<!-- content -->
-	<form action="update" method="POST" name="update_row">
-		<input type="hidden" name="id" value="${data.id}" />
+	<form action="update" method="POST" name="updateAppPost">
+		<input type="hidden" name="id" value="${application.id}" />
 		<div class="container">
 			<div class="row">
 				<div class="col-md-6">
@@ -59,61 +59,26 @@
 						<table class="table table-borderless">
 							<thead>
 								<tr>
-									<th><h2>Update Data</h2></th>
+									<th><h2>Update Application</h2></th>
 								</tr>
 								<tr>
-									<th><label class="col-md-3">Schema</label></th>
-									<th><input type="text" name="schemaName"
-										value="${data.schemaName}" /></th>
+									<th><label class="col-md-3">Application Name</label></th>
+									<th><input type="text" name="application"
+										value="${application.application}" /></th>
 								</tr>
 								<tr>
 									<th><label class="col-md-3">Table</label></th>
 									<th><input type="text" name="tableName"
-										value="${data.tableName}" /></th>
-								</tr>
-								<tr>
-									<th><label class="col-md-3">Table Type</label></th>
-									<th><input type="text" name="tableType"
-										value="${data.tableType}" /></th>
-								</tr>
-								<tr>
-									<th><label class="col-md-3">Column</label></th>
-									<th><input type="text" name="columnName"
-										value="${data.columnName}" /></th>
-								</tr>
-								<tr>
-									<th><label class="col-md-3">Data Type</label></th>
-									<th><input type="text" name="dataType"
-										value="${data.dataType}" /></th>
-								</tr>
-								<tr>
-									<th><label class="col-md-3">Default Value</label></th>
-									<th><input type="text" name="defaultValue"
-										value="${data.defaultValue}" /></th>
-								</tr>
-								<tr>
-									<th><label class="col-md-3">Column Key</label></th>
-									<th><input type="text" name="columnKey"
-										value="${data.columnKey}" /></th>
-								</tr>
-								<tr>
-									<th><label class="col-md-3">Null Able</label></th>
-									<th><input type="text" name="nullAble"
-										value="${data.nullAble}" /></th>
-								</tr>
-								<tr>
-									<th><label class="col-md-3">Auto Increment</label></th>
-									<th><input type="text" name="autoIncrement"
-										value="${data.autoIncrement}" /></th>
+										value="${application.contact}" /></th>
 								</tr>
 								<tr>
 									<th><label class="col-md-3">Description</label></th>
-									<th><textarea rows="4" name="description" />${data.description}</textarea></th>
+									<th><textarea rows="4" name="description" />${application.applicationDescription}</textarea></th>
 								</tr>
 								<tr>
 									<th>
 										<button type="submit" class="btn btn-default">Save
-											Row</button> <a href="getAll" class="btn btn-default" role="button">Cancel</a>
+											Application</button> <a href="getApplications" class="btn btn-default" role="button">Cancel</a>
 									</th>
 								</tr>
 							</thead>

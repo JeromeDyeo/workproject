@@ -18,6 +18,12 @@ public class ApplicationDetail {
 	@CsvBindByName (column = "Application")
 	private String application;
 	
+	@CsvBindByName (column = "Application Description", required = false)
+	private String applicationDescription;
+	
+	@CsvBindByName (column = "Contact", required = false)
+	private String contact;
+	
 	@CsvBindByName (column = "imagepath", required = false)
 	private String imagePath = null;
 	
@@ -58,4 +64,22 @@ public class ApplicationDetail {
 	public void setDataRow(Set<DataRow> dataRow) {
 		this.dataRow = dataRow;
 	}
+
+	public String getApplicationDescription() {
+		return applicationDescription;
+	}
+
+	public void setApplicationDescription(String applicationDescription) {
+		this.applicationDescription = applicationDescription;
+	}
+
+	public String getContact() {
+		return contact;
+	}
+
+	public void setContact(String contact) {
+		this.contact = contact;
+	}
+	
+	
 }

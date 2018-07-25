@@ -56,16 +56,15 @@ public class DataDictionaryController {
 		DataRow dataRow = dataDictionaryService.getById(id);
 		ApplicationDetail applicationDetail = applicationService.getById(dataRow.getApplicationDetail().getId());
 		mv.addObject("data", dataRow);
-		mv.addObject("application", applicationDetail);
+		//mv.addObject("application", applicationDetail);
 		return mv;
 	}
 	
 	@RequestMapping (value = {"/update"}, method = RequestMethod.POST)
-	public ModelAndView updateDataRow(@ModelAttribute("dataRow") DataRow dataRow, 
-			@ModelAttribute("applicationDetail") ApplicationDetail applicationDetail) {
+	public ModelAndView updateDataRow(@ModelAttribute("dataRow") DataRow dataRow) {
 		ModelAndView mv = new ModelAndView("redirect:getAll");
 		DataRow updatedData = dataDictionaryService.update(dataRow);
-		ApplicationDetail updatedApplication = applicationService.update(applicationDetail);
+		//ApplicationDetail updatedApplication = applicationService.update(applicationDetail);
 		return mv;
 	}
 	

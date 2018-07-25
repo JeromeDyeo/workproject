@@ -2,6 +2,7 @@ package com.datadictionary.controller;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -42,5 +43,21 @@ public class ApplicationController {
 		mv.addObject("application", application);
 		return mv;
 		
+	}
+	
+	@RequestMapping (value = {"/updateAppView"}, method = RequestMethod.POST)
+	public ModelAndView updateView(@RequestParam("id") int id) {
+		ModelAndView mv = new ModelAndView("updateapp");
+		ApplicationDetail application = applicationService.getById(id);
+		mv.addObject("application", application);
+		return mv;
+	}
+	
+	@RequestMapping (value = {"/updateAppPost"}, method = RequestMethod.POST)
+	public ModelAndView updateDataRow(@ModelAttribute("application") ApplicationDetail application) {
+		ModelAndView mv = new ModelAndView("redirect:getAll");
+		ApplicationDetail applicationUpdate = applicationService.update(application);
+		//ApplicationDetail updatedApplication = applicationService.update(applicationDetail);
+		return mv;
 	}
 }

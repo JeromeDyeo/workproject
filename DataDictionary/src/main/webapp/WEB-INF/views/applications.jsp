@@ -12,7 +12,8 @@
 <link rel="stylesheet" href="/css/bootstrap.min.css">
 <link rel="stylesheet" href="/css/style.default.css">
 <link rel="stylesheet" href="/css/pe-icon-7-stroke.css">
-<script type="text/javascript" charset="utf8" src="js/jquery-3.3.1.min.js"></script>
+<script type="text/javascript" charset="utf8"
+	src="js/jquery-3.3.1.min.js"></script>
 <link rel="stylesheet" type="text/css" href="css/datatables.min.css">
 <script type="text/javascript" charset="utf8" src="js/datatables.min.js"></script>
 
@@ -60,24 +61,24 @@
 		<div class="row">
 			<div class="col-md-6">
 				<div class="btn-toolbar">
-					 <a href="uploadImage" class="btn btn-info" role="button">Upload
+					<a href="uploadImage" class="btn btn-info" role="button">Upload
 						Image</a>
 				</div>
 			</div>
-<!-- 			<div class="col-md-6"> -->
-<!-- 				<form action="search" method="get"> -->
-<!-- 					<div class="input-group"> -->
-<!-- 						<select name="searchFilter"> -->
-<!-- 							<option value="Table">Table</option> -->
-<!-- 							<option value="Description ">Description</option> -->
-<!-- 						</select> <input type="text" name="searchKeyword" class="form-control"> -->
-<!-- 						<span class="input-group-btn"> -->
-<!-- 							<button type="submit" class="btn btn-info" -->
-<!-- 								style="margin-top: 18px; min-height: 36px;">Search</button> -->
-<!-- 						</span> -->
-<!-- 					</div> -->
-<!-- 				</form> -->
-<!-- 			</div> -->
+			<!-- 			<div class="col-md-6"> -->
+			<!-- 				<form action="search" method="get"> -->
+			<!-- 					<div class="input-group"> -->
+			<!-- 						<select name="searchFilter"> -->
+			<!-- 							<option value="Table">Table</option> -->
+			<!-- 							<option value="Description ">Description</option> -->
+			<!-- 						</select> <input type="text" name="searchKeyword" class="form-control"> -->
+			<!-- 						<span class="input-group-btn"> -->
+			<!-- 							<button type="submit" class="btn btn-info" -->
+			<!-- 								style="margin-top: 18px; min-height: 36px;">Search</button> -->
+			<!-- 						</span> -->
+			<!-- 					</div> -->
+			<!-- 				</form> -->
+			<!-- 			</div> -->
 		</div>
 	</div>
 	<!-- End of  Filter +  buttons -->
@@ -86,9 +87,49 @@
 
 	<div class="container clearfix">
 		<h6>All Applications</h6>
-		<c:forEach var="app" items="${applications}">
-			<a href="getSchema?application=${app.application}" class="btn btn-info" role="button">${app.application}</a>
-		</c:forEach>
+		<div class="row">
+			<div class="table-responsive">
+				<table id="table_id" class="display">
+					<thead>
+						<tr>
+							<th>Application</th>
+							<th>Application Description</th>
+							<th>Contact</th>
+							<th>Delete</th>
+							<th>Update</th>
+							<th>View</th>
+						</tr>
+					</thead>
+					<tbody>
+						<c:forEach var="app" items="${applications}">
+							<tr>
+								<!-- <th scope="row"></th>  -->
+								<td>${app.application}</td>
+								<td>${app.applicationDescription}</td>
+								<td>${app.contact}</td>
+								<td>
+									<button type="button" data-id="${data.id}"
+										class="open-deleteProductModal btn btn-danger"
+										data-toggle="modal" data-target="#deleteProductModal">Delete</button>
+								</td>
+								<td>
+									<form action="updateAppView" method="post">
+										<input type="hidden" name="id" value="${app.id}" />
+										<button type="submit" class="btn btn-primary">Update</button>
+									</form>
+								</td>
+								<td>
+									<form action="getSchema" method="get">
+										<input type="hidden" name="application" value="${app.application}" />
+										<button type="submit" class="btn btn-primary">View</button>
+									</form>
+								</td>
+							</tr>
+						</c:forEach>
+					</tbody>
+				</table>
+			</div>
+		</div>
 	</div>
 	<section></section>
 	<!-- End of content -->
@@ -114,10 +155,10 @@
 					<button type="button" class="close" data-dismiss="modal">&times;</button>
 				</div>
 				<div class="modal-body text-center">
-					<h5>Are you sure you want to delete?</h5>
+					<h5>Are you sure you want to delete application and all related data?</h5>
 					<br />
-					<form action="delete" method="post">
-						<input type="hidden" name="dataRow" id="dataRow" /> <input
+					<form action="deleteApplication" method="post">
+						<input type="hidden" name="application" id="application" /> <input
 							type="submit" class="btn btn-default" value="Yes"> <input
 							type="button" class="btn btn-default" data-dismiss="modal"
 							value="No"></input>
@@ -143,9 +184,9 @@
 			$('#table_id').DataTable();
 		});
 	</script>
-<!-- 	<script -->
-<!-- 		src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script> -->
-<!-- 	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script> -->
+	<!-- 	<script -->
+	<!-- 		src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script> -->
+	<!-- 	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script> -->
 	<script src="/js/bootstrap.min.js"></script>
 	<script src="/js/jquery.cookie.js"></script>
 	<script src="/js/front.js"></script>

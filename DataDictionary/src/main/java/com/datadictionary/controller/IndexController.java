@@ -31,6 +31,11 @@ public class IndexController implements ErrorController {
         return new ModelAndView("create");
     }
 	
+	@RequestMapping(value = {"createapp"})
+    public ModelAndView createapp() {
+        return new ModelAndView("createapp");
+    }
+	
 	@RequestMapping(value = {"update"})
     public ModelAndView update() {
         return new ModelAndView("update");

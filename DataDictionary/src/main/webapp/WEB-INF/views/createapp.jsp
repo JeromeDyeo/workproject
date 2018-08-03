@@ -6,7 +6,7 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
-<title>Update Campaign Data</title>
+<title>Create Application</title>
 <link rel="stylesheet" href="/css/bootstrap.min.css">
 <link rel="stylesheet" href="/css/style.default.css">
 <link rel="stylesheet" href="/css/pe-icon-7-stroke.css">
@@ -51,8 +51,7 @@
 
 
 	<!-- content -->
-	<form action="updateAppPost" method="POST" name="updateAppPost" enctype="multipart/form-data">
-		<input type="hidden" name="id" value="${application.id}" />
+	<form action="createApp" method="POST" name="updateAppPost">
 		<div class="container">
 			<div class="row">
 				<div class="col-md-6">
@@ -64,49 +63,47 @@
 								</tr>
 								<tr>
 									<th><label class="col-md-3">Application Name</label></th>
-									<th><input type="text" name="application"
-										value="${application.application}" /></th>
+									<th><input type="text" name="application" /></th>
 								</tr>
 								<tr>
 									<th><label class="col-md-3">Contact</label></th>
-									<th><input type="text" name="contact"
-										value="${application.contact}" /></th>
+									<th><input type="text" name="contact" /></th>
 								</tr>
 								<tr>
 									<th><label class="col-md-3">Description</label></th>
-									<th><textarea rows="4" name="applicationDescription" />${application.applicationDescription}</textarea></th>
+									<th><textarea rows="4" name="applicationDescription" /></textarea></th>
 								</tr>
-								<tr>
-									<th><label class="col-md-3">Image Upload</label></th>
-									<th>
-									<div class="avatar-upload">
-								        <div class="avatar-edit">
-								            <input type="file" id="imageUpload" name="imageUpload" accept=".png, .jpg, .jpeg" />
-								            <label for="imageUpload"></label>
-								        </div>
-								        <div class="avatar-preview">
-								        	<%
-								        		ApplicationDetail app = (ApplicationDetail) request.getAttribute("application");
-			                                	String image = app.getImagePath();
-			                                	String imagePath = "";
+<!-- 								<tr> -->
+<!-- 									<th><label class="col-md-3">Image Upload</label></th> -->
+<!-- 									<th> -->
+<!-- 									<div class="avatar-upload"> -->
+<!-- 								        <div class="avatar-edit"> -->
+<!-- 								            <input type="file" id="imageUpload" name="imageUpload" accept=".png, .jpg, .jpeg" /> -->
+<!-- 								            <label for="imageUpload"></label> -->
+<!-- 								        </div> -->
+<!-- 								        <div class="avatar-preview"> -->
+<%-- 								        	 
+// 								        		ApplicationDetail app = (ApplicationDetail) request.getAttribute("application");
+// 			                                	String image = app.getImagePath();
+// 			                                	String imagePath = "";
 							            		
-								            	if(image != null && !image.isEmpty()) {
-								            		imagePath = "img/" + image;
-		           								} else {
-		           									imagePath = "img/none.png";
-		           								}
-		                                	%>
-								            <div id="imagePreview" style="background-image: url(<%=imagePath%>);">
-								            </div>
-								        </div>
-								        <p class="text-danger">Image must not exceed 1MB in size</p>
-								    </div>
-								    </th>
-								</tr>
+// 								            	if(image != null && !image.isEmpty()) {
+// 								            		imagePath = "img/" + image;
+// 		           								} else {
+// 		           									imagePath = "img/none.png";
+// 		           								}
+<%-- 		                                	 --%>
+<%-- 								            <div id="imagePreview" style="background-image: url(<%=imagePath%>);"> --%>
+<!-- 								            </div> -->
+<!-- 								        </div> -->
+<!-- 								        <p class="text-danger">Image must not exceed 1MB in size</p> -->
+<!-- 								    </div> -->
+<!-- 								    </th> -->
+<!-- 								</tr> -->
 								<tr>
 									<th>
-										<button type="submit" class="btn btn-default">Save
-											Application</button> <a href="getApplications" class="btn btn-default" role="button">Cancel</a>
+										<button type="submit" class="btn btn-default">Create Application
+										</button> <a href="getApplications" class="btn btn-default" role="button">Cancel</a>
 									</th>
 								</tr>
 							</thead>

@@ -31,14 +31,7 @@ public class ApplicationService {
 	public ApplicationDetail update(ApplicationDetail applicationDetail) {
 
 		try {
-			ApplicationDetail updateRow = applicationRepository.findById(applicationDetail.getId());
-
-			if (!applicationDetail.getApplication().isEmpty()) {
-				updateRow.setApplication(applicationDetail.getApplication());
-			}
-
-			ApplicationDetail r = applicationRepository.save(updateRow);
-			return r;
+			return applicationRepository.save(applicationDetail);
 		} catch (Exception e) {
 			System.out.println(e.getMessage());
 		}

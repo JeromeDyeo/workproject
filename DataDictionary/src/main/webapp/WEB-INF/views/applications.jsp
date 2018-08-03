@@ -1,4 +1,6 @@
 <%@page import="com.datadictionary.entity.DataRow"%>
+<%@page import="com.datadictionary.entity.ApplicationDetail"%>
+<%@page import="java.util.ArrayList"%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/functions" prefix="fn"%>
@@ -61,8 +63,7 @@
 		<div class="row">
 			<div class="col-md-6">
 				<div class="btn-toolbar">
-					<a href="uploadImage" class="btn btn-info" role="button">Upload
-						Image</a>
+					<a href="createapp" class="btn btn-info" role="button">Create Application</a>
 				</div>
 			</div>
 			<!-- 			<div class="col-md-6"> -->
@@ -95,18 +96,33 @@
 							<th>Application</th>
 							<th>Application Description</th>
 							<th>Contact</th>
+							<th>Diagram</th>
 							<th>Delete</th>
 							<th>Update</th>
 							<th>View</th>
 						</tr>
 					</thead>
 					<tbody>
+						<%
+							ArrayList<ApplicationDetail> list = (ArrayList<ApplicationDetail>) request.getAttribute("application");
+							int counter = 0;
+						%>
 						<c:forEach var="app" items="${applications}">
 							<tr>
 								<!-- <th scope="row"></th>  -->
 								<td>${app.application}</td>
 								<td>${app.applicationDescription}</td>
 								<td>${app.contact}</td>
+								<c:choose>
+									<c:when test="${app.imagePath != null}">
+										<td><img src="img/${app.imagePath}" alt=""
+											class="img-responsive" height="50" width="50"></td>
+									</c:when>
+									<c:otherwise>
+										<td><img src="img/none.png" alt=""
+											class="img-responsive" height="50" width="50"></td>
+									</c:otherwise>
+								</c:choose>
 								<td>
 									<button type="button" data-id="${data.id}"
 										class="open-deleteProductModal btn btn-danger"
@@ -120,7 +136,8 @@
 								</td>
 								<td>
 									<form action="getSchema" method="get">
-										<input type="hidden" name="application" value="${app.application}" />
+										<input type="hidden" name="application"
+											value="${app.application}" />
 										<button type="submit" class="btn btn-primary">View</button>
 									</form>
 								</td>
@@ -155,7 +172,8 @@
 					<button type="button" class="close" data-dismiss="modal">&times;</button>
 				</div>
 				<div class="modal-body text-center">
-					<h5>Are you sure you want to delete application and all related data?</h5>
+					<h5>Are you sure you want to delete application and all
+						related data?</h5>
 					<br />
 					<form action="deleteApplication" method="post">
 						<input type="hidden" name="application" id="application" /> <input
